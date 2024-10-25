@@ -1,14 +1,14 @@
 <?php
 class SuperHero{
-    public $name;
-    public $powers;
-    public $planet;
-
-    public function __construct($name, $powers, $planet) //funcion que crea el objeto
+    
+    //funcion que crea el objeto
+    //promoted properties, exclusivo de php 8.0
+    public function __construct( 
+        readonly public string $name, //readonly para qe no se pueda modificar 
+        public array $powers,  
+        private string $planet) //no se puede acceder a ella desde fuera
     {
-        $this->name = $name;
-        $this->powers = $powers;
-        $this->planet = $planet;
+       
     }
 
     public function attack(){
@@ -16,13 +16,12 @@ class SuperHero{
     }
 
     public function description(){
-        return "$this->name es un superhéroe que viene de $this->planet y tiene estos poderes: $this->powers";
+        $powers = implode(",", $this->powers) ; //implode convierte array en cadena de texto
+        return "$this->name es un superhéroe que viene de $this->planet y tiene estos poderes: $powers";
     }
 }
 
-$hero = new SuperHero('Superman', 'Inteligencia, fuerza y rayos láser', 'Krypton');
-//$hero->name = 'Batman';
-//$hero->powers = 'Inteligencia, dinero y tecnología';
-//$hero->planet = 'Gotham';
+$hero = new SuperHero('Superman', ['Inteligencia', 'fuerza', 'rayos láser'], 'Krypton');
+
  echo $hero->description();
 ?>
