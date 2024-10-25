@@ -2,6 +2,15 @@
 declare(strict_types=1);
 //const API_URL = 'https://whenisthenextmcufilm.com/api';
 
+function render_template(string $template, array $data = [])
+{   
+    extract($data);
+   // var_dump($data);
+ //   $data = ['title' => 'hola']; 
+ //   $title = 'hola';  esto es lo que obtenemos al hacer el extract
+    require "templates/$template.php"; 
+
+}
 function get_data( string $url) : array 
 {
     $result = file_get_contents($url); //solo hace get

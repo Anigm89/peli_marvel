@@ -1,3 +1,4 @@
+<style>
 section{
     width: 90%;
     margin: auto;
@@ -55,3 +56,4 @@ li:hover{
     color: white;
     border: 1px solid #333;
 }
+</style>
